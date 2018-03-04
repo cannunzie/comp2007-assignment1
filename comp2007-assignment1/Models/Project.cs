@@ -19,14 +19,15 @@ namespace comp2007_assignment1.Models
 
         [Required]
         [StringLength(50)]
+		[Display(Name = "Project Name")]
         public string ProjectName { get; set; }
-
-        public string Description { get; set; }
+		
+		public string Description { get; set; }
 
         [StringLength(50)]
         public string ProjectLead { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-    }
+	}
 }

@@ -1,45 +1,37 @@
 ﻿@model IEnumerable<comp2007_assignment1.Models.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
-<h2>Index</h2>
+<h2>Projects</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProjectLead)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
+@foreach (var p in Model)
+{
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectLead)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
-        </td>
-    </tr>
+		<td>
+			<h3>
+				@Html.ActionLink(p.ProjectName, "Details", new { id = p.ProjectID })
+			</h3>
+			<p>Project Lead: @Html.DisplayFor(modelItem => p.ProjectLead)</p>
+			<p>
+				@{
+					if (p.Description.Length >= 100)
+					{
+						string excerpt = p.Description.Substring(0, 100) + "...";
+						@Html.DisplayFor(modelItem => excerpt);
+					}
+					else
+					{
+						@Html.DisplayFor(modelItem => p.Description);
+					}
+				}
+			</p>
+		</td>
+
+	</tr>
 }
 
 </table>

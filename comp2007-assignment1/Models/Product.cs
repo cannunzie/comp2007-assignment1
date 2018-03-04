@@ -14,7 +14,8 @@ namespace comp2007_assignment1.Models
 
         [Required]
         [StringLength(50)]
-        public string ProductName { get; set; }
+		[Display(Name = "Product Name")]
+		public string ProductName { get; set; }
 
         public string ProductDescription { get; set; }
 
